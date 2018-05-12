@@ -3,6 +3,12 @@ import numpy as np
 
 
 def ani1_feature(Z, R):
+    """Returns np.array shape=(num_atoms, 384)
+        ani1 feature vector.
+    Args:
+        Z: np.array shape=(num_atoms,), atom numbers
+        R: np.array shape=(3, num_atoms), xyz coordinates of atoms
+    """
     assert len(Z) == R.shape[1]
     assert R.shape[0] == 3
     atom_Z_arr = np.array(Z)
