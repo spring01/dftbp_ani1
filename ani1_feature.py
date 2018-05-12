@@ -1,4 +1,5 @@
-
+"""Usage: from ani1_feature import ani1_feature
+To run a unit test: python ani_feature.py"""
 import numpy as np
 
 
@@ -11,23 +12,23 @@ def ani1_feature(Z, R):
     """
     assert len(Z) == R.shape[1]
     assert R.shape[0] == 3
-    atom_Z_arr = np.array(Z)
+    atom_Z_arr = np.asarray(Z)
     atom_R_arr = R.T
     '''constants'''
     rad_cutoff = 4.6
     ang_cutoff = 3.1
-    rad_shifts = np.array([
+    rad_shifts = np.asarray([
         5.0000000e-01, 7.5625000e-01, 1.0125000e+00, 1.2687500e+00,
         1.5250000e+00, 1.7812500e+00, 2.0375000e+00, 2.2937500e+00,
         2.5500000e+00, 2.8062500e+00, 3.0625000e+00, 3.3187500e+00,
         3.5750000e+00, 3.8312500e+00, 4.0875000e+00, 4.3437500e+00])
     rad_eta = 1.6000000e+01
     zeta = 8.0000000e+00
-    ang_theta_shifts = np.array([
+    ang_theta_shifts = np.asarray([
         0.0000000e+00, 7.8539816e-01, 1.5707963e+00, 2.3561945e+00,
         3.1415927e+00, 3.9269908e+00, 4.7123890e+00, 5.4977871e+00])
     ang_eta = 6.0000000e+00
-    ang_shifts = np.array([
+    ang_shifts = np.asarray([
         5.0000000e-01, 1.1500000e+00, 1.8000000e+00, 2.4500000e+00])
 
 
@@ -112,11 +113,13 @@ def piece_wise_cutoff(dist, cutoff):
     return (0.5 * np.cos(np.pi * dist / cutoff) + 0.5) * (dist <= cutoff)
 
 if __name__ == '__main__':
-    test_Z = np.array([1, 1, 1, 1, 1, 1, 6, 6])
-    test_R = np.array([[ 1.14708126,  0.92832923,  1.23854411, -0.97821295, -1.1680795 ,
+    test_Z = np.asarray([1, 1, 1, 1, 1, 1, 6, 6])
+    test_R = np.asarray([[ 1.14708126,  0.92832923,  1.23854411, -0.97821295, -1.1680795 ,
         -1.16438651,  0.75624859, -0.75682282],
        [ 1.00382483, -0.44134787, -0.55805689,  0.86605525, -0.87597656,
          0.00876343, -0.00498759,  0.0082047 ],
        [-0.3857688 ,  1.10483515, -0.42403421,  0.84534216,  0.09407744,
         -0.91788441, -0.03900506,  0.01159992]])
     test_feat = ani1_feature(test_Z, test_R)
+    print(test_feat)
+    print(test_feat.shape)
